@@ -1,0 +1,21 @@
+{
+  "name": "gifgenie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "mode": "development",
+  "scripts": {
+    "build": "webpack --config webpack.common.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^6.10.0",
+    "sass": "^1.70.0",
+    "sass-loader": "^14.1.0",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.90.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
