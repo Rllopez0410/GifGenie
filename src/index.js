@@ -17,20 +17,23 @@ function fetchNewGif() {
   return response.json();
 }).then(function(response) {
     Dom.image.src = response.data.images.original.url;
-    Dom.link.download = response.data.images.original.url;
+    Dom.link.href = response.data.images.original.url;
     Dom.link.textContent = "Click Here!";
     Dom.input.value = null;
-    console.log(response.data.images.original.url);
-  });
+  }).catch((response) => {
+    if (!response.ok) {
+      throw new Error("what the fuck");
+    }
+  })
 }
 
-fetch('https://api.giphy.com/v1/gifs/translate?api_key=BIZNCFPH907rY4wbnPHeYKQOrfZ9cyOH&s=hello', {mode: 'cors'}, fetchNew)
+fetch('https://api.giphy.com/v1/gifs/translate?api_key=BIZNCFPH907rY4wbnPHeYKQOrfZ9cyOH&s=hello', {mode: 'cors'}, fetchNewGif)
 .then(function(response) {
   return response.json();
 }).then(function(response) {
     Dom.image.src = response.data.images.original.url;
     if (click) {
-      fetchNew();
+      fetchNewGif();
       click = false;
     }
   });
