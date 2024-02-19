@@ -98,6 +98,8 @@ body {
     }
 }
 
+input[type="search"]::-webkit-search-cancel-button {display: none;}
+
 @keyframes changeColor {
     0%   {color: rgb(255, 0, 0);}
     10%  {color: rgb(255, 89, 0);}
