@@ -1,4 +1,6 @@
 import "./style.scss";
+import { dbz } from "./dbz.png";
+
 const Dom = {
     image: document.querySelector("img"),
     btn: document.querySelector("button"),
@@ -12,7 +14,7 @@ Dom.btn.addEventListener("click", fetchNewGif);
 
 function fetchNewGif() {
     click = true;
-    fetch('https://api.giphy.com/v1/gifs/translate?api_key=BIZNCFPH907rY4wbnPHeYKQOrfZ9cyOH&s=' +  Dom.input.value, {mode: 'cors'})
+    fetch('https://api.giphy.com/v1/gifs/translate?api_key=ZNCFPH907rY4wbnPHeYKQOrfZ9cyOH&s=' +  Dom.input.value, {mode: 'cors'})
 .then(function(response) {
   return response.json();
 }).then(function(response) {
@@ -22,7 +24,7 @@ function fetchNewGif() {
     Dom.input.value = null;
   }).catch((response) => {
     if (!response.ok) {
-      throw new Error("what the fuck");
+      alert("can not fetch");
     }
   })
 }
