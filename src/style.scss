@@ -21,6 +21,7 @@
 body {
     display: flex;
     flex-direction: column;
+    position: relative;
     gap: 20px;
     height: 100dvh;
     justify-content: center;
@@ -32,6 +33,27 @@ body {
         color: white;
         animation: changeColor 10s infinite;
         text-shadow: 0px 0px 5px black;
+    }
+    #error-message {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        background: url("./dbz.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 350px;
+        height: 250px;
+        top: -250px;
+        z-index: 1;
+        transition: 1s;
+        .error-text {
+            background-color: rgb(252, 84, 84);
+            height: 20px;
+        }
+        #close-btn {
+            color: rgb(252, 84, 84);
+            cursor: pointer;
+        }
     }
     .search-bar {
         display: flex;

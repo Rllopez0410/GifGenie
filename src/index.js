@@ -1,20 +1,26 @@
 import "./style.scss";
-import { dbz } from "./dbz.png";
 
 const Dom = {
     image: document.querySelector("img"),
     btn: document.querySelector("button"),
     input: document.querySelector("input"),
+    errMes: document.getElementById("error-message"),
+    closeBtn: document.getElementById("close-btn"),
     link: document.querySelector("a")
 }
 
 let click = false;
 
 Dom.btn.addEventListener("click", fetchNewGif);
+Dom.closeBtn.addEventListener("click", closeErrMes);
+
+function closeErrMes() {
+  Dom.errMes.style.top = "-250px";  
+}
 
 function fetchNewGif() {
     click = true;
-    fetch('https://api.giphy.com/v1/gifs/translate?api_key=ZNCFPH907rY4wbnPHeYKQOrfZ9cyOH&s=' +  Dom.input.value, {mode: 'cors'})
+    fetch('https://api.giphy.com/v1/gifs/translate?api_key=BIZNCFPH907rY4wbnPHeYKQOrfZ9cyOH&s=' +  Dom.input.value, {mode: 'cors'})
 .then(function(response) {
   return response.json();
 }).then(function(response) {
@@ -24,7 +30,7 @@ function fetchNewGif() {
     Dom.input.value = null;
   }).catch((response) => {
     if (!response.ok) {
-      alert("can not fetch");
+      Dom.errMes.style.top = "0px";
     }
   })
 }
