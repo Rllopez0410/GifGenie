@@ -16,6 +16,7 @@ Dom.closeBtn.addEventListener("click", closeErrMes);
 
 function closeErrMes() {
   Dom.errMes.style.top = "-250px";  
+  Dom.input.removeAttribute("disabled", "");
 }
 
 function fetchNewGif() {
@@ -31,6 +32,8 @@ function fetchNewGif() {
   }).catch((response) => {
     if (!response.ok) {
       Dom.errMes.style.top = "0px";
+      Dom.input.setAttribute("disabled", "");
+      Dom.input.value = null;
     }
   })
 }
