@@ -19,23 +19,23 @@ function closeErrMes() {
   Dom.input.removeAttribute("disabled", "");
 }
 
-function fetchNewGif() {
-    click = true;
-    fetch('https://api.giphy.com/v1/gifs/translate?api_key=BIZNCFPH907rY4wbnPHeYKQOrfZ9cyOH&s=' +  Dom.input.value, {mode: 'cors'})
-.then(function(response) {
-  return response.json();
-}).then(function(response) {
-    Dom.image.src = response.data.images.original.url;
-    Dom.link.href = response.data.images.original.url;
+async function fetchNewGif() {
+  click = true;
+  try {
+    const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=BIZNCFPH907rY4wbnPHeYKQOrfZ9cyOH&s=' +  Dom.input.value, {mode: 'cors'})
+    const gifData = await response.json();
+    Dom.image.src = gifData.data.images.original.url;
+    Dom.link.href = gifData.data.images.original.url;
     Dom.link.textContent = "Click Here!";
     Dom.input.value = null;
-  }).catch((response) => {
-    if (!response.ok) {
-      Dom.errMes.style.top = "0px";
-      Dom.input.setAttribute("disabled", "");
-      Dom.input.value = null;
+  } catch (response) {
+      if (!response.ok) {
+        Dom.errMes.style.top = "0px";
+        Dom.input.setAttribute("disabled", "");
+        Dom.input.value = null;
+      }
+
     }
-  })
 }
 
 fetch('https://api.giphy.com/v1/gifs/translate?api_key=BIZNCFPH907rY4wbnPHeYKQOrfZ9cyOH&s=hello', {mode: 'cors'}, fetchNewGif)
