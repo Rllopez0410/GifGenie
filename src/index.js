@@ -26,7 +26,7 @@ async function fetchNewGif() {
     const gifData = await response.json();
     Dom.image.src = gifData.data.images.original.url;
     Dom.link.href = gifData.data.images.original.url;
-    Dom.link.textContent = "Click Here!";
+    Dom.link.textContent = Dom.image.src = gifData.data.images.original.url;;
     Dom.input.value = null;
   } catch (response) {
       if (!response.ok) {
